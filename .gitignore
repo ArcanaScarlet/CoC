@@ -2,6 +2,9 @@
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 
+# Instruction watcher local state
+.instruction-state.json
+
 # OS
 Thumbs.db
 Desktop.ini
