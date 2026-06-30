@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BadAppleマーク（PL用）左側がかじられたリンゴ。KP正本は人物_黒須_設計メモ.md -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" role="img" aria-label="かじられたリンゴのマーク">
+  <title>かじられたリンゴのマーク</title>
+  <g fill="#6B2E1F" stroke="#4A1F14" stroke-width="2" stroke-linejoin="round">
+    <!-- リンゴ本体（左側にかじり口） -->
+    <path d="M100 28 C72 28 48 52 44 88 C38 132 58 188 100 208 C142 188 162 132 156 88 C152 52 128 28 100 28 Z
+             M58 78 C48 62 38 58 32 68 C26 78 34 92 48 96 C54 82 56 78 58 78 Z"/>
+    <!-- かじりの内側（左） -->
+    <path fill="#F5F0E8" stroke="none" d="M58 78 C48 62 38 58 32 68 C26 78 34 92 48 96 C54 82 56 78 58 78 Z"/>
+    <!-- ヘタ -->
+    <path d="M94 22 C96 14 104 10 108 16 C112 22 106 28 100 28 C98 26 96 24 94 22 Z" fill="#3D5C2E" stroke="#2A4020"/>
+    <line x1="100" y1="16" x2="100" y2="28" stroke="#3D5C2E" stroke-width="3"/>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" role="img" aria-label="黒須の名刺（裏面）">
+  <title>黒須の名刺 — 裏面</title>
+  <rect width="420" height="260" rx="12" fill="#1A1A1A"/>
+  <rect x="4" y="4" width="412" height="252" rx="10" fill="none" stroke="#333" stroke-width="1"/>
+  <g transform="translate(210 130) scale(0.55)">
+    <g fill="#6B2E1F" stroke="#4A1F14" stroke-width="2" stroke-linejoin="round">
+      <path d="M0 -82 C-28 -82 -52 -58 -56 -22 C-62 22 -42 78 0 98 C42 78 62 22 56 -22 C52 -58 28 -82 0 -82 Z
+               M-42 -32 C-52 -48 -62 -52 -68 -42 C-74 -32 -66 -18 -52 -14 C-46 -28 -44 -32 -42 -32 Z"/>
+      <path fill="#F5F0E8" stroke="none" d="M-42 -32 C-52 -48 -62 -52 -68 -42 C-74 -32 -66 -18 -52 -14 C-46 -28 -44 -32 -42 -32 Z"/>
+      <path d="M-6 -88 C-4 -96 4 -100 8 -94 C12 -88 6 -82 0 -82 C-2 -84 -4 -86 -6 -88 Z" fill="#3D5C2E" stroke="#2A4020"/>
+      <line x1="0" y1="-94" x2="0" y2="-82" stroke="#3D5C2E" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
