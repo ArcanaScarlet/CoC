@@ -9,7 +9,6 @@ param(
     [string]$InstructionFile = "INSTRUCTIONS.md"
 )
 
-$ErrorActionPreference = "Stop"
 $RepoDir = Split-Path $PSScriptRoot -Parent
 $StateFile = Join-Path $RepoDir ".instruction-state.json"
 $Grok = "C:\Users\suga4\.grok\bin\grok.exe"
@@ -35,15 +34,40 @@ function Save-State($state) {
     $state | ConvertTo-Json | Set-Content $StateFile -Encoding UTF8
 }
 
+function Invoke-Git {
+    param([string[]]$GitArgs)
+    $prev = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    try {
+        & $Git @GitArgs 2>&1 | Out-Null
+    } finally {
+        $ErrorActionPreference = $prev
+    }
+}
+
+function Get-GitOutputTrimmed {
+    param([string[]]$GitArgs)
+    $prev = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    try {
+        $out = & $Git @GitArgs 2>$null
+    } finally {
+        $ErrorActionPreference = $prev
+    }
+    if ($null -eq $out) { return "" }
+    if ($out -is [array]) { return ($out -join "`n").Trim() }
+    return $out.ToString().Trim()
+}
+
 function Check-Once {
     Set-Location $RepoDir
-    & $Git fetch origin $Branch 2>&1 | Out-Null
+    Invoke-Git -GitArgs @("fetch", "origin", $Branch)
 
-    $remoteSha = (& $Git rev-parse "origin/$Branch")?.Trim()
-    $localSha = (& $Git rev-parse $Branch 2>$null)?.Trim()
+    $remoteSha = Get-GitOutputTrimmed -GitArgs @("rev-parse", "origin/$Branch")
+    $localSha = Get-GitOutputTrimmed -GitArgs @("rev-parse", $Branch)
 
     if ($remoteSha -ne $localSha) {
-        & $Git pull origin $Branch 2>&1 | Out-Null
+        Invoke-Git -GitArgs @("pull", "origin", $Branch)
         Write-Host "[watch] Pulled updates from origin/$Branch" -ForegroundColor Cyan
     }
 
@@ -55,7 +79,7 @@ function Check-Once {
 
     $content = Get-Content $filePath -Raw -Encoding UTF8
     $meta = Get-InstructionMeta $content
-    $fileSha = (& $Git rev-parse "HEAD:$InstructionFile")?.Trim()
+    $fileSha = Get-GitOutputTrimmed -GitArgs @("rev-parse", "HEAD:$InstructionFile")
     $state = Load-State
 
     if ($meta.status -ne "pending") {
