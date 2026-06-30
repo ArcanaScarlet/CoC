@@ -1,12 +1,12 @@
-# 実行ファイル（launcher）
+# launcher
 
-PC 側の指示チェック用 `.bat` はこのフォルダにまとめています。
+Double-click these `.bat` files (ASCII names for Windows compatibility).
 
-| ファイル | 用途 |
-|----------|------|
-| `指示を1回チェック.bat` | 1回だけ GitHub を確認して指示を実行 |
-| `指示監視を開始.bat` | 5分ごとにチェック（ウィンドウを開いたまま） |
-| `指示監視をタスク登録.bat` | バックグラウンドで5分ごとに自動チェック |
-| `指示監視をタスク解除.bat` | タスク登録を解除 |
+| File | Purpose |
+|------|---------|
+| `check-once.bat` | Check GitHub once and run pending instructions |
+| `start-watch.bat` | Check every 5 min (keep window open) |
+| `register-task.bat` | Register background task (every 5 min) |
+| `unregister-task.bat` | Remove background task |
 
-ダブルクリックで実行できます。
+Path: `D:\AI\sd.webui\CoC\launcher\`
