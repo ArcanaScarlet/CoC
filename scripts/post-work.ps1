@@ -2,9 +2,11 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Id,
     [Parameter(Mandatory = $true)]
-    [string]$Summary,
+    [Alias("Summary")]
+    [string]$WorkSummary,
     [Parameter(Mandatory = $true)]
-    [string]$Message
+    [Alias("Message")]
+    [string]$UserMessage
 )
 
 $CoCDir = Split-Path $PSScriptRoot -Parent
@@ -28,9 +30,9 @@ $entry = @"
 
 ## $Id — $timestamp
 
-**作業内容:** $Summary
+**作業内容:** $WorkSummary
 
-**伝言:** $Message
+**伝言:** $UserMessage
 
 ---
 "@
@@ -40,7 +42,7 @@ Add-Content -Path $LogFile -Value $entry -Encoding UTF8
 Set-Location $CoCDir
 git add -A
 
-$commitMsg = "[$Id] $Summary"
+$commitMsg = "[$Id] $WorkSummary"
 git commit -m $commitMsg
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[post-work] Commit failed or nothing to commit." -ForegroundColor Yellow
