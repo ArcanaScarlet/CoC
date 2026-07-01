@@ -6,3 +6,6 @@
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Drive instruction bridge (local cache, history, watcher)
+CoC_Instructions/
